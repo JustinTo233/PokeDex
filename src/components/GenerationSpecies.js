@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-// import { POKEAPI_URL } from "../App";
+import { POKEAPI_URL } from "../App";
 import "./Generations.css";
+import PokeCard from "./PokeCard";
 
-const POKEAPI_URL = "https://pokeapi.co/api/v2/";
+// const POKEAPI_URL = "https://pokeapi.co/api/v2/";
 
 function Species({ gen }) {
-  const [pokemonGen, setPokemonGen] = useState("");
+  const [pokemonGen, setPokemonGen] = useState(null);
 
   useEffect(() => {
     if (gen) {
-      const fetchPokemonGen = async (generationNum) => {
+      const fetchPokemonGen = async () => {
         try {
-          const res = await fetch(`${POKEAPI_URL}generation/${generationNum}`);
+          const res = await fetch(`${POKEAPI_URL}generation/${gen}`);
           if (!res.ok) {
             throw new Error("Network response was not ok");
           }
@@ -21,34 +22,20 @@ function Species({ gen }) {
           console.error("Fetching Pokémon generation failed:", e);
         }
       };
-      fetchPokemonGen(gen);
+      fetchPokemonGen();
     }
   }, [gen]);
 
   return (
-    // <div>
-    //   {pokemonGen && (
-    //     <div>
-    //       <h2>
-    //         Number of Pokémon Species: {pokemonGen.pokemon_species.length}
-    //       </h2>
-    //       <div>
-    //         {pokemonGen.pokemon_species
-    //           .map((typeInfo) => typeInfo.name)
-    //           .join(" ")}
-    //       </div>
-    //     </div>
-    //   )}
-    // </div>
     <div>
       {pokemonGen && (
         <div>
-          <h2>Number of Pokémon Species: {pokemonGen.pokemon_species.length}</h2>
+          <h2>
+            Number of Pokémon Species: {pokemonGen.pokemon_species.length}
+          </h2>
           <div className="species-container">
             {pokemonGen.pokemon_species.map((species, index) => (
-              <span key={index} className="pokemon-species">
-                {species.name}
-              </span>
+              <PokeCard key={index} name={species.name} />
             ))}
           </div>
         </div>
