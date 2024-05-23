@@ -13,9 +13,22 @@ function App() {
   const [selectedGen, setSelectedGen] = useState(null);
   const [allPokemon, setAllPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleGenerationSelect = (gen) => {
-    setSelectedGen(gen);
+    setIsAnimating(true);
+    setTimeout(() => {
+      setSelectedGen(gen);
+      setIsAnimating(false);
+    }, 500);
+  };
+
+  const handleLogoClick = () => {
+    setIsAnimating(true);
+    setTimeout(() => {
+      setSelectedGen(null);
+      setIsAnimating(false);
+    }, 500);
   };
 
   const fetchPokemonDetails = async (url) => {
@@ -73,44 +86,28 @@ function App() {
         )}
         {!loading && (
           <>
-            <img src={logo} alt="logo" className="logo"></img>
+            <img
+              src={logo}
+              alt="logo"
+              className="logo"
+              onClick={handleLogoClick}
+            ></img>
             <Button onGenerationSelect={handleGenerationSelect} />
             {selectedGen ? (
               <Species gen={selectedGen} />
             ) : (
-              <div className="pokemon-list">
+              <div className={`pokemon-list ${isAnimating ? "hidden" : ""}`}>
                 {allPokemon.map((pokemon, index) => (
                   <PokeCard
                     key={index}
                     sprites={pokemon.sprites.front_default}
                     name={pokemon.name}
                     types={pokemon.types || []}
+                    className="pokemon-block"
                   />
                 ))}
               </div>
             )}
-            {pokemonData && <div></div>}
-            {/* {selectedGen && <Species gen={selectedGen} />}
-      <div>
-        {pokemonData && (
-          <div>
-            <h1>{pokemonData.name}</h1>
-            <div className="pokemon-container">
-              {pokemonData.types.map((typeInfo) => (
-                <span
-                  key={typeInfo.slot}
-                  className="pokemon-type"
-                  style={{
-                    backgroundColor: colors[typeInfo.type.name],
-                  }}
-                >
-                  {typeInfo.type.name}
-                </span>
-              ))}
-            </div>
-          </div>
-        )}
-      </div> */}
           </>
         )}
       </div>

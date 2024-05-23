@@ -7,6 +7,8 @@ import PokeCard from "./PokeCard";
 
 function Species({ gen }) {
   const [pokemonGen, setPokemonGen] = useState(null);
+  const [detailedPokemons, setDetailedPokemons] = useState([]);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     if (gen) {
@@ -18,29 +20,63 @@ function Species({ gen }) {
           }
           const generation = await res.json();
           setPokemonGen(generation);
+
+          const pokemonDetails = await Promise.all(
+            generation.pokemon_species.map((species) =>
+              fetch(species.url.replace("pokemon-species", "pokemon")).then(
+                (res) => res.json()
+              )
+            )
+          );
+
+          pokemonDetails.sort((a, b) => {
+            const numA = parseInt(a.id);
+            const numB = parseInt(b.id);
+            return numA - numB;
+          });
+
+          setDetailedPokemons(pokemonDetails);
+          setIsAnimating(false);
         } catch (e) {
           console.error("Fetching Pokémon generation failed:", e);
+          setIsAnimating(false);
         }
       };
+      setIsAnimating(true);
       fetchPokemonGen();
     }
   }, [gen]);
 
   return (
-    <div>
-      {pokemonGen && (
-        <div>
-          <h2>
-            Number of Pokémon Species: {pokemonGen.pokemon_species.length}
-          </h2>
-          <div className="species-container">
-            {pokemonGen.pokemon_species.map((species, index) => (
-              <PokeCard key={index} name={species.name} />
-            ))}
-          </div>
-        </div>
-      )}
-    </div>
+    <>
+      <div>
+        {pokemonGen && (
+          <>
+            <h2 className="species-quantity">
+              Number of Pokémon Species: {pokemonGen.pokemon_species.length}
+            </h2>
+            <div
+              className={`species-container ${
+                isAnimating ? "hidden" : "appearing"
+              }`}
+            >
+              {detailedPokemons.map((species, index) => {
+                return (
+                  <PokeCard
+                    key={index}
+                    name={species.name}
+                    sprites={species.sprites.front_default}
+                    types={species.types}
+                    className="species-item"
+                    style={{ "--delay": index }}
+                  />
+                );
+              })}
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
