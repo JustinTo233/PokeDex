@@ -100,7 +100,9 @@ function App() {
                 {allPokemon.map((pokemon, index) => (
                   <PokeCard
                     key={index}
-                    sprites={pokemon.sprites.front_default}
+                    sprites={
+                      pokemon.sprites.other["official-artwork"].front_default
+                    }
                     name={pokemon.name}
                     types={pokemon.types || []}
                     className="pokemon-block"

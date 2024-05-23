@@ -10,11 +10,6 @@ body {
   background: linear-gradient(to right, #d4d3dd, #efefbb);
 }
 
-@font-face {
-  font-family: PokemonGB;
-  src: url("./fonts/PokemonGb-RAeo.ttf") format("truetype");
-}
-
 .container {
   display: flex;
   flex-direction: column;

@@ -65,7 +65,9 @@ function Species({ gen }) {
                   <PokeCard
                     key={index}
                     name={species.name}
-                    sprites={species.sprites.front_default}
+                    sprites={
+                      species.sprites.other["official-artwork"].front_default
+                    }
                     types={species.types}
                     className="species-item"
                     style={{ "--delay": index }}

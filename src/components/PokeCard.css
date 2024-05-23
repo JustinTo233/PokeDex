@@ -1,6 +1,22 @@
 @font-face {
-  font-family: PokemonGB;
-  src: url("../fonts/PokemonGb-RAeo.ttf") format("truetype");
+  font-family: "Flexo-Demi";
+  src: url("../fonts/Flexo-Demi.ttf");
+}
+@font-face {
+  font-family: "Flexo-Medium";
+  src: url("../fonts/Flexo-Medium.ttf");
+}
+@font-face {
+  font-family: "Flexo-Bold";
+  src: url("../fonts/Flexo-Bold.ttf");
+}
+@font-face {
+  font-family: "Flexo-HeavyIt";
+  src: url("../fonts/Flexo-HeavyIt.ttf");
+}
+@font-face {
+  font-family: "Flexo-W01";
+  src: url("../fonts/Flexo-W01-Black.ttf");
 }
 
 .pokemon-card {
@@ -15,19 +31,21 @@
 .pokemon-card:hover {
   transform: scale(1.05);
 }
-.pokemon-sprites {
+.pokemon-img {
   width: 100px;
   height: 100px;
   object-fit: contain;
+  justify-items: center;
 }
 
 .pokemon-name {
-  font-family: PokemonGB;
-  text-transform: uppercase;
-  font-size: 12px;
+  font-family: "Flexo-Demi";
+  text-transform: capitalize;
+  font-size: 20px;
   margin-bottom: 10px;
 }
 .pokemon-types {
+  font-family: "Flexo-Medium";
   display: flex;
   justify-content: center;
   gap: 10px;
