@@ -6,6 +6,7 @@ import Button from "./components/Button";
 import Species from "./components/GenerationSpecies";
 import PokeCard from "./components/PokeCard";
 import "./components/Pokeball.css";
+import PokeStats from "./components/PokeStats";
 export const POKEAPI_URL = "https://pokeapi.co/api/v2/";
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
   const [allPokemon, setAllPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleGenerationSelect = (gen) => {
     setIsAnimating(true);
@@ -29,6 +32,15 @@ function App() {
       setSelectedGen(null);
       setIsAnimating(false);
     }, 500);
+  };
+
+  const handlePokemonStatsClick = (pokemon) => {
+    setSelectedPokemon(pokemon);
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPokemon(null);
   };
 
   const fetchPokemonDetails = async (url) => {
@@ -106,12 +118,18 @@ function App() {
                     name={pokemon.name}
                     types={pokemon.types || []}
                     className="pokemon-block"
+                    onClick={() => handlePokemonStatsClick(pokemon)}
                   />
                 ))}
               </div>
             )}
           </>
         )}
+        <PokeStats
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          pokemon={selectedPokemon}
+        />
       </div>
     </>
   );

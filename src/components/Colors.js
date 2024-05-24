@@ -18,3 +18,22 @@ export const colors = {
   steel: "#B7B7CE",
   fairy: "#D685AD",
 };
+
+export function getTextColor(backgroundColor) {
+  const color = backgroundColor.substring(1); // Remove the '#'
+  const rgb = parseInt(color, 16); // Convert hex to integer
+  const r = (rgb >> 16) & 0xff; // Extract red
+  const g = (rgb >> 8) & 0xff; // Extract green
+  const b = (rgb >> 0) & 0xff; // Extract blue
+
+  // Calculate luminance
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+
+  const isBlue = b > r && b > g;
+
+  if (isBlue) {
+    return "white"; // Use white for shades of blue
+  }
+  // Use black for bright backgrounds and white for dark backgrounds
+  return luminance > 128 ? "black" : "white";
+}
