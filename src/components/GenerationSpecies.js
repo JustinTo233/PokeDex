@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { POKEAPI_URL } from "../App";
 import "./Generations.css";
 import PokeCard from "./PokeCard";
+import PokeStats from "./PokeStats";
 
 // const POKEAPI_URL = "https://pokeapi.co/api/v2/";
 
@@ -9,6 +10,8 @@ function Species({ gen }) {
   const [pokemonGen, setPokemonGen] = useState(null);
   const [detailedPokemons, setDetailedPokemons] = useState([]);
   const [isAnimating, setIsAnimating] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (gen) {
@@ -47,6 +50,15 @@ function Species({ gen }) {
     }
   }, [gen]);
 
+  const handlePokemonStatsClick = (pokemon) => {
+    setSelectedPokemon(pokemon);
+    setIsModalOpen(true);
+  };
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setSelectedPokemon(null);
+  };
+
   return (
     <>
       <div>
@@ -71,12 +83,18 @@ function Species({ gen }) {
                     types={species.types}
                     className="species-item"
                     style={{ "--delay": index }}
+                    onClick={() => handlePokemonStatsClick(species)}
                   />
                 );
               })}
             </div>
           </>
         )}
+        <PokeStats
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
+          pokemon={selectedPokemon}
+        />
       </div>
     </>
   );

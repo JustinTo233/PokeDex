@@ -1,6 +1,5 @@
 import "./PokeCard.css";
-import { colors, getTextColor } from "./Colors";
-import { cardColors } from "./CardColors";
+import { colors, getTextColor, cardColors } from "./Utils";
 
 function PokeCard({ sprites, name, types, onClick }) {
   const primaryType = types[0].type.name;
