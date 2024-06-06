@@ -28,7 +28,6 @@ function PokeStats({ isOpen, onClose, pokemon }) {
   const pokeAbilities = abilities.filter(
     (abilityInfo) => !abilityInfo.is_hidden
   );
-  const pokeSprite = sprites.front_default;
   const animatedPokeSprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${id}.gif`;
 
   return (

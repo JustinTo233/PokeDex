@@ -7,7 +7,10 @@ import Species from "./components/GenerationSpecies";
 import PokeCard from "./components/PokeCard";
 import "./components/Pokeball.css";
 import PokeStats from "./components/PokeStats";
+import { Autocomplete, TextField } from "@mui/material";
+
 export const POKEAPI_URL = "https://pokeapi.co/api/v2/";
+// import TextField from "@material-ui/TextField";
 
 function App() {
   const [pokemonData, setPokemonData] = useState("");
@@ -25,7 +28,16 @@ function App() {
       setIsAnimating(false);
     }, 500);
   };
-
+  const handlePokemonSelect = async (event, value) => {
+    if (value) {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${value.name}`
+      );
+      const data = await response.json();
+      setSelectedPokemon(data);
+      setIsModalOpen(true);
+    }
+  };
   const handleLogoClick = () => {
     setIsAnimating(true);
     setTimeout(() => {
@@ -33,7 +45,6 @@ function App() {
       setIsAnimating(false);
     }, 500);
   };
-
   const handlePokemonStatsClick = (pokemon) => {
     setSelectedPokemon(pokemon);
     setIsModalOpen(true);
@@ -86,6 +97,7 @@ function App() {
       document.body.classList.remove("loading");
     }
   }, [loading]);
+
   return (
     <>
       <div className="container">
@@ -104,6 +116,21 @@ function App() {
               className="logo"
               onClick={handleLogoClick}
             ></img>
+            <Autocomplete
+              options={allPokemon}
+              getOptionLabel={(option) => option.name}
+              style={{ width: 500 }}
+              onChange={handlePokemonSelect}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Choose a Pokémon"
+                  variant="outlined"
+                />
+              )}
+              className="search-bar"
+              sx={{}}
+            />
             <Button onGenerationSelect={handleGenerationSelect} />
             {selectedGen ? (
               <Species gen={selectedGen} />
