@@ -100,10 +100,11 @@ body {
 .close-sidebar {
   position: absolute;
   top: 15px;
-  right: 15px;
+  right: 10px;
   background-color: transparent;
   border: none;
-  font-size: 40px; /* Increase size for visibility */
+  color: black;
+  font-size: 40px;
   cursor: pointer;
 }
 .close-sidebar:hover {

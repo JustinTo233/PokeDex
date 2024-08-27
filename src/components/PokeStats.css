@@ -114,6 +114,7 @@
   .modal-content {
     padding: 10px;
     width: 95%;
+    max-height: 90vh;
   }
 
   .modal-body {
@@ -143,5 +144,9 @@
 
   .types-container {
     justify-content: center; /* Center-align types */
+  }
+  .close-btn {
+    top: 5px; /* Adjust position if needed */
+    right: 5px;
   }
 }
