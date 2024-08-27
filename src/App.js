@@ -20,6 +20,7 @@ function App() {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const handleGenerationSelect = (gen) => {
     setIsAnimating(true);
@@ -27,6 +28,7 @@ function App() {
       setSelectedGen(gen);
       setIsAnimating(false);
     }, 500);
+    setIsSidebarOpen(false);
   };
   const handlePokemonSelect = async (event, value) => {
     if (value) {
@@ -84,6 +86,10 @@ function App() {
     }
   };
 
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   useEffect(() => {
     document.title = "PokeDex";
 
@@ -119,19 +125,34 @@ function App() {
             <Autocomplete
               options={allPokemon}
               getOptionLabel={(option) => option.name}
-              style={{ width: 500 }}
               onChange={handlePokemonSelect}
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Choose a Pokémon"
+                  label="Search Pokémon"
                   variant="outlined"
                 />
               )}
-              className="search-bar"
-              sx={{}}
+              className="searchbar"
             />
-            <Button onGenerationSelect={handleGenerationSelect} />
+            <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+              <button className="close-sidebar" onClick={handleToggleSidebar}>
+                &times;
+              </button>
+              <Button onGenerationSelect={handleGenerationSelect} />
+            </div>
+            <button
+              className={`sidebar-toggle ${isSidebarOpen ? "hidden" : ""}`}
+              onClick={handleToggleSidebar}
+            >
+              <span className="bar"></span>
+              <span className="bar"></span>
+              <span className="bar"></span>
+            </button>
+
+            <div className="gen-buttons">
+              <Button onGenerationSelect={handleGenerationSelect} />
+            </div>
             {selectedGen ? (
               <Species gen={selectedGen} />
             ) : (
