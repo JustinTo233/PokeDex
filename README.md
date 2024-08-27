@@ -16,8 +16,13 @@ Welcome to the Pokémon Pokédex project! This application allows users to view 
 - Filter Pokémon by generation.
 - View detailed information for each Pokémon.
 - Responsive design for different screen sizes.
+- Ability to search through all Pokémon.
+- Sidebar added for smaller screens.
 
-![PokeDex_Home](https://github.com/JustinTo233/PokeDex/assets/74964260/ba0a74c7-87bf-452c-bb6e-fedd3d0876ab)
+![image](https://github.com/user-attachments/assets/af3913fc-4d49-4706-a074-bcf28b8c9fdf)
+![image](https://github.com/user-attachments/assets/98465948-8989-4510-8d47-e778e14ef33e)
+![image](https://github.com/user-attachments/assets/edfb059e-13f5-486d-ab44-51674c448e17)
+
 
 ## Technologies Used
 
