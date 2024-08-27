@@ -13,7 +13,6 @@ export const POKEAPI_URL = "https://pokeapi.co/api/v2/";
 // import TextField from "@material-ui/TextField";
 
 function App() {
-  const [pokemonData, setPokemonData] = useState("");
   const [selectedGen, setSelectedGen] = useState(null);
   const [allPokemon, setAllPokemon] = useState([]);
   const [loading, setLoading] = useState(false);
