@@ -83,7 +83,7 @@ body {
   background-color: transparent; /* Remove button background */
   border: none; /* Remove border */
   cursor: pointer; /* Pointer cursor for interaction */
-  z-index: 1001; /* Above the sidebar */
+  z-index: 900; /* Above the sidebar */
   padding: 10px; /* Padding for touch targets */
 }
 .sidebar-toggle .bar {
@@ -100,7 +100,7 @@ body {
 .close-sidebar {
   position: absolute;
   top: 15px;
-  left: 15px;
+  right: 15px;
   background-color: transparent;
   border: none;
   font-size: 40px; /* Increase size for visibility */

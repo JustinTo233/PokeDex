@@ -110,3 +110,38 @@
   padding: 5px 10px;
   border-radius: 5px;
 }
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 10px;
+    width: 95%;
+  }
+
+  .modal-body {
+    flex-direction: column; /* Stack content vertically */
+    align-items: center; /* Center-align items */
+  }
+
+  .modal-left,
+  .modal-right {
+    min-width: unset; /* Reset min-width */
+    margin: 10px 0; /* Add spacing between sections */
+  }
+
+  .poke-sprite {
+    width: 150px; /* Smaller sprite size for smaller screens */
+  }
+
+  .poke-height,
+  .poke-weight,
+  .abilities-container {
+    font-size: 16px; /* Smaller font size */
+  }
+
+  .stat-bar {
+    height: 10px; /* Adjust stat bar height */
+  }
+
+  .types-container {
+    justify-content: center; /* Center-align types */
+  }
+}
