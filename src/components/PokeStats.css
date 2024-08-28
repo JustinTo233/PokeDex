@@ -117,7 +117,7 @@
   .modal-content {
     padding: 10px;
     width: 95%;
-    max-height: 90vh;
+    max-height: 100vh;
   }
 
   .modal-body {
@@ -127,18 +127,19 @@
 
   .modal-left,
   .modal-right {
-    min-width: unset; /* Reset min-width */
-    margin: 10px 0; /* Add spacing between sections */
+    margin: 5px 0; /* Reduce margin to save space */
+    width: 100%; /* Add spacing between sections */
   }
 
   .poke-sprite {
     width: 150px; /* Smaller sprite size for smaller screens */
+    height: auto;
   }
 
   .poke-height,
   .poke-weight,
   .abilities-container {
-    font-size: 16px; /* Smaller font size */
+    font-size: 14px; /* Smaller font size */
   }
 
   .stat-bar {
@@ -149,7 +150,61 @@
     justify-content: center; /* Center-align types */
   }
   .close-btn {
-    top: 5px; /* Adjust position if needed */
+    top: 5px;
     right: 5px;
+    font-size: 18px; /* Adjust button size */
+  }
+}
+@media (max-width: 400px) {
+  .modal-content {
+    width: 95%;
+    max-height: 100vh; /* Ensure it fits within the viewport height */
+    padding: 10px;
+  }
+
+  .modal-body {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+  }
+
+  .modal-left,
+  .modal-right {
+    margin: 5px 0; /* Reduce margin to save space */
+    width: 100%; /* Full width on smaller screens */
+  }
+
+  .poke-sprite {
+    width: 130px; /* Further reduce sprite size for smaller screens */
+    height: auto;
+  }
+
+  .poke-height,
+  .poke-weight,
+  .abilities-container {
+    font-size: 14px; /* Smaller font size */
+  }
+
+  .stat-bar {
+    height: 8px; /* Reduce height of the stat bar */
+  }
+
+  .close-btn {
+    top: 5px;
+    right: 5px;
+    font-size: 18px; /* Adjust button size */
+  }
+
+  .modal-header h2 {
+    font-size: 18px; /* Smaller header font size */
+  }
+
+  .types-container,
+  .pokemon-abilities {
+    gap: 5px;
+    text-align: center; /* Center-align text for better readability */
+  }
+
+  .abilities-container {
+    margin-top: 10px; /* Add spacing between elements */
   }
 }
