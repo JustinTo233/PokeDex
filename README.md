@@ -21,6 +21,7 @@ https://justinto233.github.io/PokeDex/
 - Sidebar added for smaller screens.
 
 ![image](https://github.com/user-attachments/assets/af3913fc-4d49-4706-a074-bcf28b8c9fdf)
+![image](https://github.com/user-attachments/assets/0dc962d4-5240-4824-ad80-85825c8bbbd4)
 ![image](https://github.com/user-attachments/assets/98465948-8989-4510-8d47-e778e14ef33e)
 ![image](https://github.com/user-attachments/assets/edfb059e-13f5-486d-ab44-51674c448e17)
 
