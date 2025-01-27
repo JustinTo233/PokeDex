@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/PokeDex/static/css/main.68a18344.css",
-    "main.js": "/PokeDex/static/js/main.82c618b0.js",
+    "main.js": "/PokeDex/static/js/main.8f31daef.js",
     "static/media/Flexo-HeavyIt.ttf": "/PokeDex/static/media/Flexo-HeavyIt.fd87980cb19c25bae1b8.ttf",
     "static/media/Flexo-Demi.ttf": "/PokeDex/static/media/Flexo-Demi.3665139649a4ec998167.ttf",
     "static/media/Flexo-Medium.ttf": "/PokeDex/static/media/Flexo-Medium.3d98acc511bfc95a0755.ttf",
@@ -11,10 +11,10 @@
     "static/media/Pokédex_logo.png": "/PokeDex/static/media/Pokédex_logo.907dcf3a592a0e37e0dd.png",
     "index.html": "/PokeDex/index.html",
     "main.68a18344.css.map": "/PokeDex/static/css/main.68a18344.css.map",
-    "main.82c618b0.js.map": "/PokeDex/static/js/main.82c618b0.js.map"
+    "main.8f31daef.js.map": "/PokeDex/static/js/main.8f31daef.js.map"
   },
   "entrypoints": [
     "static/css/main.68a18344.css",
-    "static/js/main.82c618b0.js"
+    "static/js/main.8f31daef.js"
   ]
 }
